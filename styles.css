@@ -11945,7 +11945,7 @@ html.dark body,
   .hero-rise > div {
     height: 92% !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+    transform: translateX(-10%) !important;
   }
 }
 
