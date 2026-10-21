@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production output
+dist/
+
+# Scratch & temporary workspace files
+scratch/
+backup-comp.cjs
+current_competitive_backup.html
+competitive_section.html
+experience.html
+/*.png
+/*.jpg
+/*.webp
+
+# Environment & Editor
+.env
+.env.local
+.env.*.local
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
