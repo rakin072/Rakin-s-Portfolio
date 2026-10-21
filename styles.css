@@ -11910,3 +11910,279 @@ html.dark body,
   background: rgba(255, 255, 255, 0.08) !important;
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & INTERACTION POLISH (iPhone 15 Pro Max & Smartphones)
+   Strictly scoped to mobile & tablet queries — Zero changes for Desktop / Laptop
+   ========================================================================== */
+
+/* 1. Global Section Spacing, Anchor Alignment & Smooth Flow */
+@media (max-width: 1023px) {
+  /* Ensure anchors clear the fixed glass header comfortably */
+  section[id],
+  main > section {
+    scroll-margin-top: 5.5rem !important;
+  }
+
+  /* Compact section vertical rhythm on tablets/mobile */
+  section.pb-24,
+  section.pt-28 {
+    padding-top: 2.75rem !important;
+    padding-bottom: 2.75rem !important;
+  }
+
+  /* Hero Section Mobile Layout & Island Positioning */
+  .hero-rise {
+    height: 310px !important;
+    max-height: 320px !important;
+    position: relative !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+    overflow: visible !important;
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  .hero-rise > div {
+    height: 92% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* 2. Phone Screen Specifics (< 768px / 640px) */
+@media (max-width: 768px) {
+  /* Mobile Section Headers & Titles */
+  .hero-main-title {
+    font-size: clamp(2.35rem, 8.5vw, 3.25rem) !important;
+    line-height: 1.05 !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .hero-sub-title {
+    font-size: clamp(1.4rem, 5.2vw, 1.85rem) !important;
+    line-height: 1.18 !important;
+    margin-top: 0.75rem !important;
+  }
+
+  /* Schematic Container Horizontal Pan on Mobile */
+  .blueprint-hero-schematic {
+    position: relative !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    padding-bottom: 0.75rem !important;
+    scrollbar-width: thin !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .schematic-blueprint-box {
+    min-width: 540px !important;
+    border-radius: 1.25rem !important;
+  }
+
+  /* Production Services Row Layout on Mobile */
+  .blueprint-service-item {
+    padding: 1.5rem 0 !important;
+  }
+
+  .blueprint-service-item > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  /* Standardize service item vertical order on mobile */
+  .blueprint-service-item .w-24 {
+    order: 1 !important;
+    width: auto !important;
+    text-align: left !important;
+  }
+
+  .blueprint-service-item .service-wire-num {
+    font-size: 2.75rem !important;
+    line-height: 1 !important;
+    letter-spacing: -0.02em !important;
+    display: inline-block !important;
+  }
+
+  .blueprint-service-item .flex-1 {
+    order: 2 !important;
+  }
+
+  .blueprint-service-item .w-44 {
+    order: 3 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 2rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    border-top: 1px dashed rgba(15, 23, 42, 0.08) !important;
+    border-bottom: 1px dashed rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .dark .blueprint-service-item .w-44 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .blueprint-service-item .service-quote-callout {
+    order: 4 !important;
+    width: 100% !important;
+    margin-top: 0.25rem !important;
+    font-size: 0.8125rem !important;
+  }
+
+  /* Service Action Buttons */
+  .btn-service-view,
+  .btn-service-order {
+    min-height: 44px !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Competitive Programming Competencies Bar */
+  .comp-competencies-strip {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    padding: 1rem 1.25rem !important;
+  }
+
+  .comp-competencies-pills {
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  /* Touch Feedback (No Sticky Hovers on iOS) */
+  .btn-3d:active,
+  .career-journey-card:active,
+  .library-folder-card:active,
+  .edu-poker-card:active {
+    transform: scale(0.97) !important;
+    transition: transform 0.1s ease !important;
+  }
+}
+
+/* 3. Segmented Pill Scrollers & Micro-Components (< 640px) */
+@media (max-width: 640px) {
+  /* Skills & Tools Filter Pills: Native horizontal scroll segmented bar */
+  #skills ul[aria-label="Highlight by level"] {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 6px !important;
+    gap: 0.45rem !important;
+  }
+
+  #skills ul[aria-label="Highlight by level"]::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #skills ul[aria-label="Highlight by level"] li {
+    flex-shrink: 0 !important;
+  }
+
+  /* Coding Notes Language Tabs: Horizontal scroll segmented bar */
+  #notes [role="tablist"] {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 6px !important;
+    gap: 0.5rem !important;
+  }
+
+  #notes [role="tablist"]::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #notes [role="tablist"] button {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    padding: 0.5rem 0.85rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* Travel District Folders: Compact 2-column tactile grid */
+  .library-folder-card {
+    padding: 0.6rem 0.35rem !important;
+  }
+
+  .library-folder-card img {
+    height: 6.25rem !important;
+    width: auto !important;
+  }
+
+  .library-folder-card h3 {
+    font-size: 0.875rem !important;
+    margin-top: 0.35rem !important;
+  }
+
+  /* Poker Throw Keyframe overrides for Mobile: Safe bounds (no horizontal overflow) */
+  @keyframes pokerThrowRight {
+    0% {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translate3d(70px, -24px, 0) rotate(14deg) scale(0.92);
+    }
+    55% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(8px, -4px, 0) rotate(3deg) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes pokerThrowLeft {
+    0% {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translate3d(-70px, -24px, 0) rotate(-14deg) scale(0.92);
+    }
+    55% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(-8px, -4px, 0) rotate(-3deg) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+  }
+
+  /* Connect Bar & Social Menu */
+  .connect-bar {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .social-menu {
+    gap: 0.75rem !important;
+  }
+
+  /* Education card padding */
+  .edu-poker-card {
+    padding: 1.25rem !important;
+  }
+}
+
+/* 4. Mobile Navigation Drawer Animation Classes */
+#mobile-menu-drawer {
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#mobile-menu-drawer.is-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+

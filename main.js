@@ -101,34 +101,42 @@ function initTheme() {
 
 // 2. Mobile Menu Drawer
 function initMobileMenu() {
-  const menuBtn = document.querySelector('button[aria-label="Open menu"]');
+  const menuBtn = document.getElementById('mobile-menu-btn') || document.querySelector('button[aria-label="Open menu"]');
   if (!menuBtn) return;
 
-  let menuDrawer = document.getElementById('mobile-nav-drawer');
+  let menuDrawer = document.getElementById('mobile-menu-drawer') || document.getElementById('mobile-nav-drawer');
   if (!menuDrawer) {
     menuDrawer = document.createElement('div');
-    menuDrawer.id = 'mobile-nav-drawer';
-    menuDrawer.className = 'fixed inset-0 z-40 bg-black/60 backdrop-blur-md transition-opacity duration-300 hidden opacity-0 lg:hidden flex flex-col justify-end';
+    menuDrawer.id = 'mobile-menu-drawer';
+    menuDrawer.className = 'fixed inset-0 z-[60] flex flex-col justify-start p-4 transition-all duration-300 opacity-0 pointer-events-none -translate-y-4';
+    menuDrawer.setAttribute('role', 'dialog');
+    menuDrawer.setAttribute('aria-modal', 'true');
+    menuDrawer.setAttribute('aria-label', 'Mobile Navigation');
     menuDrawer.innerHTML = `
-      <div class="bg-background border-t border-ink/10 rounded-t-3xl p-6 shadow-2xl max-h-[85vh] overflow-y-auto">
-        <div class="flex items-center justify-between pb-4 border-b border-ink/10">
-          <span class="text-xl font-bold text-brand">Navigation</span>
-          <button id="close-mobile-menu" class="p-2 rounded-full hover:bg-ink/5 text-ink">
-            <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <div class="mobile-menu-backdrop absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+      <div class="relative z-10 w-full max-w-md mx-auto rounded-3xl border border-white/40 dark:border-white/10 bg-white/95 dark:bg-[#0c1422]/95 backdrop-blur-2xl p-6 shadow-2xl transition-all">
+        <div class="flex items-center justify-between pb-4 border-b border-ink/10 dark:border-white/10">
+          <div class="flex items-center gap-3">
+            <img src="/avatar.png" class="h-10 w-auto [image-rendering:pixelated]" alt="Avatar"/>
+            <span class="text-xl font-bold tracking-tight text-brand">Portfolio</span>
+          </div>
+          <button type="button" id="mobile-menu-close-btn" class="grid size-10 place-items-center rounded-full border border-ink/10 bg-black/5 dark:bg-white/10 text-ink dark:text-white" aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
           </button>
         </div>
-        <ul class="flex flex-col gap-2 py-4">
-          <li><a href="/#work" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">Work</a></li>
-          <li><a href="/#notes" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">Coding Notes</a></li>
-          <li><a href="/experience" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">Experience</a></li>
-          <li><a href="/#library" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">Library</a></li>
-          <li><a href="/#hobbies" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">Hobbies</a></li>
-          <li><a href="/#about" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">About</a></li>
-          <li><a href="/#contact" class="mobile-nav-link block px-4 py-3 text-lg font-medium rounded-xl hover:bg-brand/10 hover:text-brand">Contact</a></li>
+        <ul class="py-4 space-y-1 text-base font-semibold">
+          <li><a href="/#work" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>Work</span><span class="opacity-40">→</span></a></li>
+          <li><a href="/#notes" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>Coding Notes</span><span class="opacity-40">→</span></a></li>
+          <li><a href="/experience" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>Experience</span><span class="opacity-40">→</span></a></li>
+          <li><a href="/#library" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>My Library</span><span class="opacity-40">→</span></a></li>
+          <li><a href="/#hobbies" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>Hobbies</span><span class="opacity-40">→</span></a></li>
+          <li><a href="/#about" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>About</span><span class="opacity-40">→</span></a></li>
+          <li><a href="/#contact" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-brand/10 hover:text-brand transition-colors text-ink dark:text-white"><span>Contact</span><span class="opacity-40">→</span></a></li>
         </ul>
-        <div class="pt-2">
-          <a href="/#contact" class="btn-3d flex items-center justify-center gap-3 w-full py-3.5 rounded-xl bg-brand text-background font-medium text-lg">
-            Get in Touch
+        <div class="pt-2 border-t border-ink/10 dark:border-white/10">
+          <a href="/#contact" class="mobile-nav-link btn-3d flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand font-medium text-background hover:bg-brand-hover">
+            <span>Get in Touch</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
           </a>
         </div>
       </div>
@@ -138,23 +146,39 @@ function initMobileMenu() {
 
   function toggleMenu(open) {
     if (open) {
-      menuDrawer.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        menuDrawer.classList.remove('opacity-0');
-        menuBtn.setAttribute('aria-expanded', 'true');
-      });
+      menuDrawer.classList.add('is-open');
+      menuDrawer.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+      menuDrawer.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     } else {
-      menuDrawer.classList.add('opacity-0');
+      menuDrawer.classList.remove('is-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+      menuDrawer.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
       menuBtn.setAttribute('aria-expanded', 'false');
-      setTimeout(() => {
-        menuDrawer.classList.add('hidden');
-      }, 300);
+      document.body.style.overflow = '';
     }
   }
 
-  menuBtn.addEventListener('click', () => toggleMenu(true));
+  menuBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const isOpen = menuDrawer.classList.contains('is-open');
+    toggleMenu(!isOpen);
+  });
+
   menuDrawer.addEventListener('click', (e) => {
-    if (e.target === menuDrawer || e.target.closest('#close-mobile-menu') || e.target.closest('.mobile-nav-link')) {
+    if (
+      e.target.classList.contains('mobile-menu-backdrop') ||
+      e.target.closest('#mobile-menu-close-btn') ||
+      e.target.closest('#close-mobile-menu') ||
+      e.target.closest('.mobile-nav-link')
+    ) {
+      toggleMenu(false);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuDrawer.classList.contains('is-open')) {
       toggleMenu(false);
     }
   });
@@ -968,7 +992,7 @@ function initLibraryFolders() {
   if (!librarySection) return;
 
   const folderNames = [
-    "Syllhet", "Kuakata", "Cox'Bazar", "Sundarban", "Pabna", "Natore",
+    "Sylhet", "Kuakata", "Cox'Bazar", "Sundarban", "Pabna", "Natore",
     "Sirajganj", "Khulna", "Barishal", "Kushtia", "Tangail", "Magura",
     "Jhenaidah", "Sajek", "Pakshi", "Faridpur", "Pirojpur", "Gazipur",
     "Mymenshing", "MouloviBazar", "Cumilla", "Brahmanbaria", "Sonargaon",
